@@ -1,0 +1,111 @@
+ALGORITHM somme
+VAR
+    t1 : array_of integer [] := [12,13,6,10];
+    t2 : array_of integer [] := [13,10,16,15];
+    sum : integer : =0;
+    i,j : integer : =1;
+BEGIN
+    FOR i FROM 1 TO t1 STEP 1  DO
+    FOR j FROM 2 TO t2 STEP 2  DO
+    IF (t1[i]= t2[j]) THEN
+            sum : =sum + t1[i]*2;
+    END_IF
+    END_FOR
+    END_FOR
+    write ("la somme est ,sum");
+END
+
+
+
+
+ALGORITHM CommunHash
+VAR
+    t1 : array_of integer [] := [12,13,6,10];
+    t2 : array_of integer [] := [13,10,16,15];
+    h : hash_table<integer,integer>
+BEGIN
+    FOR i FROM 1 TO t1.length STEP 1  DO
+        h.insert(t1[i],1)
+    END_FOR
+    FOR i FROM 1 TO t2.length STEP 1  DO
+        IF (h.lookup(t2[i]=true)) THEN
+            h.insert(t2[i],2)
+        ELSE
+            h.insert(t2[i],1)
+        END_IF
+    END_FOR
+    FOR i FROM 1 TO t1.length STEP 1  DO
+        IF (h.get(t1[i])=2) THEN
+            sum = sum +t1[i]*2
+        END_IF
+    END_FOR
+END
+
+
+
+
+ALGORITHM  distinctsSimple
+VAR
+   t1 : array_of integer [] := [12,13,6,10];
+    t2 : array_of integer [] := [13,10,16,15];
+    sum : integer : - 0;
+    i,j : integer : - 1;
+    exist : BOOLEAN :- false
+BEGIN
+    FOR i FROM 1 TO t1.length STEP 1  DO
+        exist = false
+
+        FOR i FROM t2.length TO  STEP 1 DO
+            IF (t1[i]=t2[i]) THEN
+                exist = true
+            END_IF
+        END_FOR
+
+        IF (exist = false) THEN
+            sum = sum +t[i]
+        END_IF
+    END_FOR
+
+    FOR 1 FROM 1 TO t2.length STEP 1  DO
+        exist = false
+        
+        FOR j FROM t1 TO t1.length STEP 1  DO
+            IF (t2[i]= t1[j]) THEN
+                exist = true
+            END_IF
+        END_FOR
+
+        IF (exist = false) THEN
+            sum = sum + t2[i]
+        END_IF
+    END_FOR
+END
+
+
+
+ALGORITHM Hashdistincts
+VAR
+    t1 : array_of integer [] := [12,13,6,10];
+    t2 : array_of integer [] := [13,10,16,15];
+    h : hash_table<integer,integer>
+BEGIN
+
+    FOR i FROM 1 TO t1.length STEP 1  DO
+        h.insert(t1[i],1)
+    END_FOR
+
+    FOR i FROM 1 TO t2.length STEP 1  DO
+        IF (h.lookup(t2[i]=true)) THEN
+            h.insert(t2[i],2)
+        ELSE
+            h.insert(t2[i],1)
+        END_IF
+    END_FOR
+
+    FOR i FROM 1 TO t1.length STEP 1  DO
+        IF (h.get(t2[i])=1) THEN
+            sum = sum +t2[i]
+        END_IF
+    END_FOR
+
+END
